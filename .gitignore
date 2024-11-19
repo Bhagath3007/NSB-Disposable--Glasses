@@ -1,0 +1,24 @@
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Database files (local SQLite database)
+db.sqlite3
+
+# Static files collected by Django during development
+/static/
+
+# Log files and other temporary files
+*.log
+
+# Template files for translations (optional)
+*.pot
+
+# Python bytecode cache files (compiled Python files)
+*.py[cod]
+
+# Swap files created by editors like Vim
+*.swp
+
+# Environment variable file (for storing sensitive information like API keys, etc.)
+.env/
