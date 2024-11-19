@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register-NSB Disposable Glasses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'NSBMAINLOGO.webp' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Link to CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body,span,h1,h2,h3,h4,h5,h6,.nav-links,.auth-buttons{
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700; /* Use 400, 500, 600, or 700 for different weights */
+        }
+        p {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; /* Default background color for dark theme */
+            color: white; /* Default text color for dark theme */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            min-height: 100vh; /* Ensure body takes full height */
+            padding-top: 80px; /* Add space below navbar */
+        }
+
+        nav {
+            width: 100%;
+            height: 30px;
+            background-color: black;
+            position: fixed; /* Fixed navigation bar */
+            top: 0; /* Align to top */
+            padding: 5px 0; /* Reduced padding for smaller height */
+            z-index: 1000; /* Ensure navbar is above other elements */
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: space-between;
+            padding: 0 20px; /* Adjust padding if necessary */
+        }
+
+        .logo img {
+            height: 100px; /* Reduced logo size */
+            max-height: 100%;
+            width: auto; /* Adjust to maintain aspect ratio */
+        }
+
+        .menu-icon {
+            display: none; /* Initially hide the menu icon */
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+            position: relative; /* For dropdown positioning */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white; /* Link color for dark theme */
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute;
+            background-color: black;
+            list-style: none;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1; /* Ensure dropdown is above other elements */
+        }
+
+        .dropdown li {
+            margin: 5px 0;
+        }
+
+        /* Show dropdown on hover */
+        li:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff; /* Change heading color to white */
+            margin-top: 20px; /* Space from the navbar */
+        }
+
+        /* Form container styles */
+        form {
+            background: teal; /* Teal background for the form */
+            max-width: 400px;
+            width: 100%; /* Make form responsive */
+            margin: 20px auto; /* Center form horizontally */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fieldset styles */
+        fieldset {
+            border: 2px solid white; /* White border for fieldset */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        legend {
+            font-size: 1.5rem; /* Legend font size */
+            color: white; /* Legend text color */
+            padding: 0 10px; /* Padding for legend */
+        }
+
+        /* Input field styles */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border 0.3s;
+            background-color: white; /* White background for input fields */
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #999; /* Placeholder text color */
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><img src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()" title="Menu">
+                <span>☰</span> <!-- Hamburger menu emoji -->
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">🏠 Home</a></li>
+                <li>
+                    <li><a href="{% url 'homep' %}">🛍️ products</a></li>
+            
+                 
+                </li>
+                <li>
+                    
+                    <li><a href="{% url 'aboutus' %}">👥  About Us</a></li>
+            
+                </li>
+                {% comment %} <li><a href="{% url 'contact' %}">📧 Contact Us</a></li> {% endcomment %}
+            </ul>
+            </ul>
+                    <ul class="dropdown">
+                        <li><a href="/login/">🔐 Login</a></li> <!-- Login Link -->
+                        <li><a href="/register/">📝 Register</a></li> <!-- Register Link -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Register</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <fieldset>
+            <legend>Registration Details</legend>
+
+            <!-- Fields for user registration -->
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" placeholder="Enter your first name" required>
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" required>
+
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Choose a username" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Create a password" required>
+
+            <label for="address">Address</label>
+            <textarea name="address" id="address" rows="4" placeholder="Enter your address" required></textarea>
+
+            <label for="photo">Profile Photo</label>
+            <input type="file" name="photo" id="photo" accept="image/*" required>
+        </fieldset>
+
+        <button type="submit">Register</button>
+    </form>
+    <a href="{% url 'login' %}">Already have an account? Login</a>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>

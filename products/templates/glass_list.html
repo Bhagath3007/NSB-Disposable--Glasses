@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass List</title>
+    
+</head>
+<body>
+    <h1>Glass Products</h1>
+    <a href="{% url 'add_glass' %}">Add New Glass</a>
+    <ul>
+        {% for glass in glasses %}
+            <li>
+                <img src="{{ glass.image.url }}" alt="{{ glass.size }} Glass" style="width:100px;">
+                <p>Size: {{ glass.size }}</p>
+                <p>Count: {{ glass.count }}</p>
+                <p>Price: ${{ glass.price }}</p>
+                <button>Add to Cart</button>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

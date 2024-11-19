@@ -1,0 +1,660 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Our Products-NSB Disposable Glasses</title>
+    <link rel="icon" href="{% static 'NSBMAINLOGO.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+   
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,span,h1,h2,h3,h4,h5,h6,.nav-links,.auth-buttons{
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700; /* Use 400, 500, 600, or 700 for different weights */
+        }
+        p {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+        }
+     
+        body,span,h1,h2,h3,h4,h5,h6 {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700; /* Use 400, 500, 600, or 700 for different weights */
+        }
+        p {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+        }
+    
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        nav {
+            background-color: black;
+            width: 100%;
+        }
+        .legal{
+            position:relative;
+            left:550px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin: 0 10px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: black;
+            list-style: none;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+        
+        li:hover .dropdown {
+            display: block;
+        }
+        
+        .about-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .about-description {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+        }
+        
+        .about-image img.active {
+            opacity: 1;
+        }
+        
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-form input[type="text"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid white;
+            width: 250px;
+        }
+        
+        .auth-buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid white;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        
+        .auth-buttons a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        .flowing-text {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .flowing-text span {
+            color: white;
+            animation: wordFlow 1.5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+        
+        @keyframes wordFlow {
+            0%, 100% {
+                color: white;
+            }
+            50% {
+                color: teal;
+            }
+        }
+        
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            background-color: #f8f8f8;
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        .product-card h2 {
+            font-size: 20px;
+            margin: 15px 0;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .discount-price {
+            font-size: 16px;
+            color: #d9534f;
+            text-decoration: line-through;
+        }
+        
+        .rating {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .promotion {
+            font-size: 14px;
+            color: green;
+        }
+        
+        /* Mobile view (320px and above) */
+        @media (max-width: 767px) {
+            .navbar {
+                flex-direction: column; /* Stack the navbar items */
+                align-items: flex-start;
+            }
+        
+            .logo img {
+                height: 60px;
+            }
+        
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                background-color: black;
+                padding: 10px 0;
+                text-align: left;
+            }
+        
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+            }
+        
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .about-description {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        
+            .about-image {
+                max-width: 100%;
+            }
+        
+            .product-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        
+            .search-form input[type="text"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        
+            .product-card {
+                width: 90%;
+                margin: 10px auto;
+            }
+        }
+        .nav-links{
+            display:flex;
+            position:relative;
+            left: 100px;
+            bottom:80px;
+        }
+        .nav-links {
+            display: flex; /* Make sure the navigation links are displayed in a row */
+            flex-direction: row; /* Explicitly set the direction to row (default behavior) */
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px; /* Space between items */
+        }
+        
+        /* Optional: To ensure proper alignment of the links in the navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Align logo to the left and navbar items to the right */
+            align-items: center;
+            width: 100%;
+        }
+         .logo{
+            position:relative;
+            right: 150px;
+        }
+        /* Tablet view (768px and above) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+                
+            }
+        
+            .logo  {
+                height: 80px;
+               
+            }
+            .legal{
+                left:120px;  
+            }
+        
+            .nav-links {
+                flex-direction: row;
+                position:relative;
+                top:5px;
+                right: 950px;
+                
+               
+            }
+            .auth-buttons{
+                position:relative;
+                top:150px;
+                right: 330px;
+            }
+            .logo{
+                position:relative;
+                top:500px;
+            }
+----------------------------
+.auth-buttons {
+    position: static; /* Remove relative positioning */
+    margin: 0px auto; /* Center-align buttons */
+    display: block; /* Stack buttons */
+    width: 100%; /* Ensure they fit smaller screens */
+    text-align: center;
+}
+
+.logo {
+    position: static; /* Reset positioning */
+    margin: 10px auto; /* Add spacing for visibility */
+    max-width: 80%; /* Make the logo fit smaller screens */
+}
+.auth-button.register-btn {
+    left: 0; /* Reset positioning for responsive layout */
+    margin: 20px auto; /* Center the button on the page */
+    display: block; /* Stack buttons if needed */
+    width: auto; /* Allow the button to resize naturally */
+    text-align: center; /* Center text inside the button */
+}
+
+.auth-button.login-btn {
+    
+    left: 0; /* Reset positioning for responsive layout */
+    margin: 20px auto; /* Center the button on the page */
+    display: block; /* Stack buttons if needed */
+    width: auto; /* Allow the button to resize naturally */
+    text-align: center; /* Center text inside the button */
+ 
+
+
+}
+.legal{
+    position: relative;
+    left:220px;
+}
+
+.
+-----------------------------
+        
+            .about-container {
+                flex-direction: row;
+                text-align: left;
+            }
+        
+            .about-description {
+                max-width: 60%;
+            }
+        
+            .about-image {
+                max-width: 40%;
+            }
+        
+            .search-form input[type="text"] {
+                width: 200px;
+            }
+        
+            .product-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        
+            .product-card {
+                width: 280px;
+            }
+        }
+        
+        /* Laptop view (1025px and above) */
+        @media (min-width: 1025px) {
+            .navbar {
+                flex-direction: row;
+                position:relative;
+                top: 100px;
+
+            }
+        
+            .logo img {
+                height: 100px;
+                position:relative;
+                bottom: 80px;
+            }
+        
+            .nav-links {
+                flex-direction: row;
+            }
+            .logo{
+                position: relative;
+                left: 5%;
+            }
+        
+            .product-container {
+                flex-direction: row;
+            }
+        
+            .product-card {
+                width: 280px;
+            }
+        }
+      
+        
+        ------------
+        @keyframes textFlow {
+            0% {
+                color: white;
+            }
+            100% {
+                color: teal;
+            }
+        }
+        
+        .flowing-text {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px; /* Adds space between words */
+        }
+        
+        .flowing-text span {
+            color: white;
+            opacity: 1;
+            animation: wordFlow 1.5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s); /* Delay for each word */
+        }
+        .auth-buttons{
+            position:relative;
+            bottom:80px;
+        }
+        
+        .auth-button.login-btn {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: 2px solid #008080;
+        }
+        
+        .auth-button.register-btn {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: 2px solid #008080;
+        }
+        @keyframes wordFlow {
+            0%, 100% {
+                color: white;
+            }
+            50% {
+                color: teal;
+            }
+        }
+        
+        /* Assign incremental custom properties for each word */
+        .flowing-text span:nth-child(1) { --i: 0; }
+        .flowing-text span:nth-child(2) { --i: 1; }
+        .flowing-text span:nth-child(3) { --i: 2; }
+        .flowing-text span:nth-child(4) { --i: 3; }
+        .flowing-text span:nth-child(5) { --i: 4; }
+        .flowing-text span:nth-child(6) { --i: 5; }
+        .flowing-text span:nth-child(7) { --i: 6; }
+        .flowing-text span:nth-child(8) { --i: 7; }
+        .flowing-text span:nth-child(9) { --i: 8; }
+        .flowing-text span:nth-child(10) { --i: 9; }
+        .flowing-text span:nth-child(11) { --i: 10; }
+        .flowing-text span:nth-child(12) { --i: 11; }
+        .flowing-text span:nth-child(13) { --i: 12; }
+        .flowing-text span:nth-child(14) { --i: 13; }
+        .flowing-text span:nth-child(15) { --i: 14; }
+        .flowing-text span:nth-child(16) { --i: 15; }
+        
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        @media screen and (min-width: 320px) and (max-width: 767px) {
+            .product-container {
+                position: relative;
+                left: 20%;
+            }
+            .auth-buttons {
+                position: relative;
+                bottom:-85px;
+                left:20%;
+             
+        }
+        .flowing-products{
+            position:relative;
+            left: 10%;
+        }
+        .product-container{
+            position:relative;
+            left: 30px;
+
+}
+.legal{
+    position:relative;
+    left: 80px;
+}
+.nav-links{
+    position:relative;
+    top:-20px;
+    left:20px;
+}
+
+
+
+        }
+
+body {
+    font-family: 'Poppins', sans-serif; /* Rounded and friendly */
+}
+
+h1, h2, h3 {
+    font-family: 'Pacifico', cursive; /* Fun and playful script font for headings */
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><img class="i" src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+            </div>
+<ul class="nav-links" id="navLinks">
+    <li><a href="/">🏠 Home</a></li>
+    <li>
+        <li><a href="{% url 'homep' %}">🛍️ products</a></li>
+
+     
+    </li>
+    <li>
+        
+        <li><a href="{% url 'aboutus' %}"> 👥About Us</a></li>
+
+    </li>
+    <li><a href="{% url 'contact' %}">📧 Contact Us</a></li>
+</ul>
+</ul>
+ <div class="auth-container">
+        <div class="auth-buttons">
+            <a href="/login/" class="auth-button login-btn">🔐 Login</a>
+            <a href="/register/" class="auth-button register-btn">📝 Register</a>
+        </div>
+    </div>
+
+            {% comment %} <div class="search-container">
+                <form class="search-form" action="/search/" method="GET">
+                    <input type="text" placeholder="🔍 Search..." name="query" required>
+                    <button type="submit">Search</button>
+                </form>
+            </div> {% endcomment %}
+        </div>
+    </nav>
+
+    
+        
+ <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+  
+        <h1 style="text-align:center" class="flowing-products">
+            <span>O</span><span>u</span><span>r</span>
+            <span>P</span><span>r</span><span>o</span><span>d</span><span>u</span><span>c</span><span>t</span><span>s</span>
+        </h1>
+        
+    <div class="product-container">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            <h3 style="color:black">{{ product.title }}</h3>
+            <p style="color:black">{{ product.description }}</p>
+            <p class="price">Price: ${{ product.price }}INR</p>
+            {% if product.discount_price %}
+            <p class="discount-price">Discounted Price: ${{ product.discount_price }}</p>
+            {% endif %}
+            <p class="rating">Rating: {{ product.rating }} ({{ product.reviews_count }} reviews)</p>
+            {% if product.is_promotion %}
+            <p class="promotion">Promotion: {{ product.promotion_details }}</p>
+            {% endif %}
+            <!-- Like button -->
+            
+        </div>
+        {% endfor %}
+    </div>
+
+    
+        <!-- Legal Information -->
+        <div class="legal">
+            <p>&copy; 2024 NSB Disposable Glasses. All rights reserved.</p>
+        </div>
+    </footer>
+    
+   
+</body>
+</html>

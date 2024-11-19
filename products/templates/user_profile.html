@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'your_css_file.css' %}">  <!-- Optional: Link to your CSS file -->
+</head>
+style
+<body>
+    <h2>User Profile</h2>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'user_profile' %}">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields here -->
+        <button type="submit">Update Profile</button>
+    </form>
+    
+    <h3>Profile Picture:</h3>
+    {% if user_profile.profile_picture %}
+        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="100">
+    {% else %}
+        <p>No profile picture uploaded.</p>
+    {% endif %}
+    
+    <p><a href="{% url 'logout' %}">Log out</a></p>
+</body>
+</html>
+

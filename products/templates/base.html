@@ -1,0 +1,1449 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'NSBMAINLOGO.webp' %}" type="image/x-icon">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSB Disposable Glasses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="{% static 'NSBMAINLOGO.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+            
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .social-media{
+         position:relative;
+          top:100px;
+
+        }
+        body,span,h1,h2,h3,h4,h5,h6,.nav-links,.auth-buttons{
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700; /* Use 400, 500, 600, or 700 for different weights */
+        }
+        p {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+        }
+    
+          
+        body {
+            font-family: "Dancing Script", cursive;
+
+            {% comment %} font-family: Arial, sans-serif; {% endcomment %}
+
+            background-color: black;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        ----------------------
+        .about-image {
+            position: relative; /* Parent element must be positioned */
+            width: 100%; /* Adjust as needed */
+            height: auto; /* Adjust based on your layout */
+            overflow: hidden; /* Ensure no overflow */
+        }
+        
+        .about-image img {
+            position: absolute; /* Stack all images on top of each other */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ensure images cover the parent */
+            height: auto;
+            opacity: 0; /* Initially hide all images */
+            transition: opacity 1s ease-in-out; /* Smooth fade effect */
+            z-index: 0; /* Set stack order */
+        }
+        
+        .about-image img.active {
+            opacity: 1; /* Show the active image */
+            z-index: 1; /* Bring the active image to the front */
+        }
+        
+
+
+
+
+        --------------------------------
+
+        .social-media{
+            position:relative;
+            top:100px;
+            left:10%;
+            transform: translateX(-50%);
+        }
+       
+        .about-image {
+            width: 100%;
+            max-width: 400px; /* Ensure the image has a reasonable max-width */
+            height: auto; /* Maintain aspect ratio */
+          }
+          
+          @media screen and (max-width: 768px) {
+            .about-image {
+              width: 100%; /* Make it fully responsive */
+              height: auto;
+            }
+          }
+          --------------------------------------
+          /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: black;
+    position: relative;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 60px; /* Adjusted for mobile */
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.about-description {
+    flex: 1 1 100%; /* Full width on mobile */
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1 1 100%; /* Full width on mobile */
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Product Cards */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 100%; /* Full width on mobile */
+    max-width: 280px;
+    text-align: center;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+    width: 100%; /* Full width on mobile */
+    max-width: 300px;
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        display: none; /* Hide initially */
+        width: 100%;
+        background-color: black;
+        padding: 10px 0;
+    }
+
+    .nav-links.show-menu {
+        display: flex; /* Show on toggle */
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-description, 
+    .about-image {
+        flex: 1 1 100%;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    .search-form input[type="text"] {
+        width: 100%;
+    }
+}
+
+
+----
+
+
+
+--------------------
+        nav {
+            background-color: black;
+            position: relative;
+            width: 100%;
+        }
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        
+        .logo img {
+            height: 120px;
+            max-height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+        
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-left: auto;
+        }
+        
+        .nav-links li {
+            margin: 0 10px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: black;
+            list-style: none;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .dropdown li {
+            margin: 5px 0;
+        }
+        
+        li:hover .dropdown {
+            display: block;
+        }
+        
+        .about-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .about-description {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .about-image {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 350px;
+            position: absolute;
+            top:0px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+         .about-image img.active {
+            opacity: 1;
+        } 
+        
+        .about1 {
+            padding: 20px;
+            max-width: 1200px;
+            margin-top: 40px;
+            position: relative;
+            top: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about1-description {
+            margin-bottom: 20px;
+            
+        }
+        
+        .video-frame {
+            width: 100%;
+            margin-top: 20px;
+             position: absolute;
+            left:850px; 
+          
+        }
+        
+        .search-form {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        
+        .search-form input[type="text"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid white;
+            width: 250px;
+            margin-right: 5px;
+        }
+        
+        .auth-buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border: 1px solid white;
+            border-radius: 4px;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+        
+        .auth-buttons a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+         
+        h2 {
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: textFlow 1s steps(20, end) infinite;
+        }
+
+        /* Keyframes for the flowing text effect */
+        @keyframes textFlow {
+            0% {
+                color: white;
+            }
+            100% {
+                color: teal;
+            }
+        }
+        
+        /* Style each letter with a delay for the flowing effect */
+        h2 span {
+            display: inline-block;
+            animation: textColor 1s linear infinite;
+            animation-fill-mode: forwards;
+        }
+
+        /* Apply delay for each letter */
+        h2 span:nth-child(1) { animation-delay: 0.1s; }
+        h2 span:nth-child(2) { animation-delay: 0.2s; }
+        h2 span:nth-child(3) { animation-delay: 0.3s; }
+        h2 span:nth-child(4) { animation-delay: 0.4s; }
+        h2 span:nth-child(5) { animation-delay: 0.5s; }
+        h2 span:nth-child(6) { animation-delay: 0.6s; }
+        h2 span:nth-child(7) { animation-delay: 0.7s; }
+        h2 span:nth-child(8) { animation-delay: 0.8s; }
+        h2 span:nth-child(9) { animation-delay: 0.9s; }
+        h2 span:nth-child(10) { animation-delay: 1s; }
+        /* Continue for each letter as needed */
+
+        /* Keyframes for each letter color animation */
+        @keyframes textColor {
+            0%, 50% {
+                color: white;
+            }
+            100% {
+                color: teal;
+            }
+        }
+
+
+        .flowing-text {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px; /* Adds space between words */
+        }
+        
+        .flowing-text span {
+            color: white;
+            opacity: 1;
+            animation: wordFlow 1.5s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s); /* Delay for each word */
+        }
+        
+        @keyframes wordFlow {
+            0%, 100% {
+                color: white;
+            }
+            50% {
+                color: teal;
+            }
+        }
+        
+        /* Assign incremental custom properties for each word */
+        .flowing-text span:nth-child(1) { --i: 0; }
+        .flowing-text span:nth-child(2) { --i: 1; }
+        .flowing-text span:nth-child(3) { --i: 2; }
+        .flowing-text span:nth-child(4) { --i: 3; }
+        .flowing-text span:nth-child(5) { --i: 4; }
+        .flowing-text span:nth-child(6) { --i: 5; }
+        .flowing-text span:nth-child(7) { --i: 6; }
+        .flowing-text span:nth-child(8) { --i: 7; }
+        .flowing-text span:nth-child(9) { --i: 8; }
+        .flowing-text span:nth-child(10) { --i: 9; }
+        .flowing-text span:nth-child(11) { --i: 10; }
+        .flowing-text span:nth-child(12) { --i: 11; }
+        .flowing-text span:nth-child(13) { --i: 12; }
+        .flowing-text span:nth-child(14) { --i: 13; }
+        .flowing-text span:nth-child(15) { --i: 14; }
+        .flowing-text span:nth-child(16) { --i: 15; }
+        
+       
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .menu-icon {
+                display: block;
+                color: white;
+                margin-left: auto;
+                margin-right: 10px;
+            }
+        
+            .show-menu {
+                display: flex;
+            }
+        
+            .nav-links {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: black;
+                padding: 10px 0;
+            }
+        
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .about-description {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        
+            .about-image {
+                margin-top: 20px;
+            }
+        
+            .video-frame {
+                width: 100%;
+                margin-top: 20px;
+               
+            }
+        }
+
+        /* Container for the product cards */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Styling for each product card */
+.product-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect on the card */
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f8f8f8;
+}
+
+/* Image styling inside the card (full image) */
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;  /* Ensures the full image is shown without cropping */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on the image */
+.product-card:hover img {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+}
+
+/* Title and text styling */
+.product-card h2 {
+    font-size: 20px;
+    margin: 15px 0;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Price and Discount Price styling */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.discount-price {
+    font-size: 16px;
+    color: #d9534f;
+    text-decoration: line-through;
+}
+
+/* Rating section styling */
+.rating {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Promotion section */
+.promotion {
+    font-size: 14px;
+    color: green;
+}
+
+/* Flowing text animation for dynamic text effects */
+.flowing-text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Adds space between words */
+}
+
+.flowing-text span {
+    color: white;
+    opacity: 1;
+    animation: wordFlow 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s); /* Delay for each word */
+}
+
+@keyframes wordFlow {
+    0%, 100% {
+        color: white;
+    }
+    50% {
+        color: teal;
+    }
+}
+
+/* Assign incremental custom properties for each word */
+.flowing-text span:nth-child(1) { --i: 0; }
+.flowing-text span:nth-child(2) { --i: 1; }
+.flowing-text span:nth-child(3) { --i: 2; }
+.flowing-text span:nth-child(4) { --i: 3; }
+.flowing-text span:nth-child(5) { --i: 4; }
+.flowing-text span:nth-child(6) { --i: 5; }
+.flowing-text span:nth-child(7) { --i: 6; }
+.flowing-text span:nth-child(8) { --i: 7; }
+.flowing-text span:nth-child(9) { --i: 8; }
+.flowing-text span:nth-child(10) { --i: 9; }
+.flowing-text span:nth-child(11) { --i: 10; }
+.flowing-text span:nth-child(12) { --i: 11; }
+.flowing-text span:nth-child(13) { --i: 12; }
+.flowing-text span:nth-child(14) { --i: 13; }
+.flowing-text span:nth-child(15) { --i: 14; }
+.flowing-text span:nth-child(16) { --i: 15; }
+
+/* Smooth transition for text */
+
+-------------------------------------------
+/* Flowing text animation specifically for 'Our Products' */
+.flowing-products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px; /* Adds space between letters */
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+}
+
+.flowing-products span {
+    opacity: 1;
+    animation: letterFlow 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s); /* Delay for each letter */
+}
+
+@keyframes letterFlow {
+    0%, 100% {
+        color: white;
+    }
+    50% {
+        color: teal;
+    }
+}
+
+/* Assign incremental custom properties for each letter in 'Our Products' */
+.flowing-products span:nth-child(1) { --i: 0; }
+.flowing-products span:nth-child(2) { --i: 1; }
+.flowing-products span:nth-child(3) { --i: 2; }
+.flowing-products span:nth-child(4) { --i: 3; }
+.flowing-products span:nth-child(5) { --i: 4; }
+.flowing-products span:nth-child(6) { --i: 5; }
+.flowing-products span:nth-child(7) { --i: 6; }
+.flowing-products span:nth-child(8) { --i: 7; }
+.flowing-products span:nth-child(9) { --i: 8; }
+.flowing-products span:nth-child(10) { --i: 9; }
+.flowing-products span:nth-child(11) { --i: 10; }
+.flowing-products span:nth-child(12) { --i: 11; }
+
+.product-card h2:hover {
+    color: #2d87f0; /* Change color of title on hover */
+}
+
+.product-card .price:hover {
+    color: #2d87f0; /* Price hover effect */
+}
+
+-----mp--------------------------
+
+/* General styles for mobile responsiveness */
+@media (max-width: 768px) {
+    /* Navbar styles */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-icon {
+        display: block;
+        color: white;
+        margin-left: auto;
+        margin-right: 10px;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: black;
+        padding: 10px 0;
+        z-index: 1;
+    }
+
+    .nav-links.show-menu {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 1.1rem;
+    }
+
+    .dropdown {
+        position: absolute;
+        background-color: black;
+        list-style: none;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        display: none;
+    }
+
+    .nav-links li:hover .dropdown {
+        display: block;
+    }
+
+    /* About container adjustments */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-description {
+        margin-bottom: 20px;
+    }
+
+    .about-image {
+        margin-top: 20px;
+    }
+
+    .video-frame {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        margin-left: 10px;
+    }
+
+    .search-form input[type="text"] {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .auth-buttons a {
+        margin: 5px;
+    }
+
+    /* Styling for text */
+    .flowing-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Adds space between words */
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .product-card {
+        width: 240px;
+    }
+
+    .product-card h2 {
+        font-size: 18px;
+    }
+}
+
+/* Animation for card */
+@keyframes card-hover-animation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.product-card:hover {
+    animation: card-hover-animation 0.3s ease-in-out;
+}
+-------------------footer----------------
+
+
+/* General Footer Styling */
+.footer {
+    background-color: #111; /* Deep black background */
+    color: #ddd; /* Light grey text for readability */
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer h3, .footer h4 {
+    color: #ffffff;
+    margin-top: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Company Info Styling */
+.company-info img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.company-info p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* Navigation Links */
+/* General Footer Styles */
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Company Information */
+.company-info {
+    max-width: 200px;
+    text-align: center;
+}
+
+.company-info img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.company-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.company-info p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Footer Navigation Links */
+.footer-nav h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: teal;
+}
+
+.footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 8px;
+}
+
+.footer-nav ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-nav ul li a:hover {
+    color: teal;
+}
+
+/* Social Media Links */
+.social-media h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: teal;
+}
+
+.social-media a {
+    color: #aaa;
+    font-size: 18px;
+    margin: 0 8px;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: teal;
+}
+
+/* Map Embed */
+iframe {
+    border: 0;
+    max-width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Legal Information */
+.legal {
+    text-align: center;
+    padding-top: 20px;
+    color: #777;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    /* Navbar Adjustments */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-icon {
+        display: block;
+        color: white;
+        margin-left: auto;
+        margin-right: 10px;
+        font-size: 1.5rem;
+    }
+
+    .show-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: black;
+        padding: 10px 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    /* About Section Adjustments */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .about-description {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-image {
+        margin-top: 20px;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Video Frame */
+    .video-frame {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Search Box Adjustments */
+    .search-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-right: 10px;
+    }
+
+    /* Auth Buttons */
+    .auth-buttons a {
+        margin-top: 10px;
+    }
+
+    /* Footer Styles */
+    .footer {
+        padding: 20px;
+        background-color: black;
+        text-align: center;
+        color: white;
+        margin-top: 40px;
+    }
+
+    .footer a {
+        text-decoration: none;
+        color: white;
+        margin: 0 10px;
+        transition: color 0.3s;
+    }
+
+    .footer a:hover {
+        color: teal;
+    }
+
+    .footer .social-icons {
+        margin-top: 10px;
+    }
+
+    .footer .social-icons i {
+        margin: 0 15px;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .footer .social-icons i:hover {
+        color: teal;
+    }
+}
+/* Auth Container */
+.auth-container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 130px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Auth Buttons Wrapper */
+.auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between buttons */
+    border-radius: 130px; /* Rounded corners for the container */
+
+}
+
+/* Button Styles */
+.auth-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 25px; /* Rounded corners for the buttons */
+    border: 2px solid transparent; /* Border to prevent layout shifts */
+    transition: all 0.3s ease;
+}
+
+/* Teal Color Styling for Buttons */
+.auth-button.login-btn {
+    background-color: #008080; /* Teal color */
+    color: white;
+    border: 2px solid #008080;
+}
+
+.auth-button.register-btn {
+    background-color: #008080; /* Teal color */
+    color: white;
+    border: 2px solid #008080;
+}
+
+/* Button Hover Effects */
+.auth-button:hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Darker Teal on Hover for Buttons */
+.auth-button.login-btn:hover,
+.auth-button.register-btn:hover {
+    background-color: #004d4d; /* Darker teal color on hover */
+    border-color: #004d4d;
+}
+
+
+
+
+
+      {% comment %} ---------------------------   {% endcomment %}
+      @media screen and (max-width: 768px) {
+        /* Stack the navbar items vertically but keep them aligned to the right */
+        .navbar {
+         display:flex;
+         justify-content:space-between;
+         position:relative;
+         bottom:250px;
+         left:100px;
+        }
+        .logo{
+
+            position:relative;
+            top:250px;
+            right:120px;
+        }
+.auth-container{
+    position:relative;
+    left:100px;
+}
+
+.social-media{
+    position:relative;
+    left:120px;
+    top:100px;
+}
+.auth-buttons{
+    position:relative;
+    left:30px;
+    top:250px;
+}
+{% comment %} .social-media{
+    position:relative;
+    top:200px;
+    left:100px;
+    transform: translateX(-50%);
+} {% endcomment %}
+
+    
+        .nav-links {
+            display: flex;
+            flex-direction: row; /* Keep the nav items in a row */
+            justify-content: flex-end; /* Align them to the right */
+            width: auto;
+            margin-left: 20px; /* Provide some spacing between logo and links */
+        }
+    
+        .nav-links li {
+            margin: 0 10px; /* Adjust spacing between links */
+        }
+    
+        .auth-container {
+            flex-direction: column;
+            margin-top: 10px; /* Space for auth buttons */
+        }
+    
+        .auth-buttons a {
+            width: auto;
+            margin: 5px 0;
+        }
+    
+            .map {
+                width: 200%;     /* Make the iframe 100% width of the container */
+                max-width: 100%; /* Ensure iframe stretches to container's width */
+                height: 500px;   /* Adjust height for mobile views if needed */
+            }
+        }
+        .footer-nav{
+            position:relative;
+            top:100px;
+        }
+     
+        .auth-container{
+            position:relative;
+            {% comment %} top:220px; {% endcomment %}
+        }
+
+ @media screen and (min-width: 320px) and (max-width: 767px) {
+.auth-buttons{
+            position:relative;
+            top:250px;
+            left:-100px;
+}
+.about-image{
+    position:relative;
+    left:80px;
+
+}
+.social-media{
+    position:relative;
+    right:280px;
+    left:80px;
+    top:50px;
+}
+.pa{
+    text-align:center;
+    position:relative;
+    left:10%;
+}
+.product-container{
+    position:relative;
+    left:50px;
+}
+.flowing-products{
+    position:relative;
+    left:15%;
+}
+.map{
+    width:50%;
+    height:200px;
+    position:relative;
+    bottom:50px;
+    left:90px;
+    right:150px;
+}
+.legal{
+    text-align:center;
+    position:relative;
+    left:5%;
+}
+.footer-nav{
+    position:relative;
+    left
+}
+
+
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><img src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">🏠 Home</a></li>
+                <li>
+                    <li><a href="{% url 'homep' %}">🛍️ products</a></li>
+            
+                 
+                </li>
+                <li>
+                    
+                    <li><a href="{% url 'aboutus' %}"> 👥About Us</a></li>
+            
+                </li>
+                <li><a href="{% url 'contact' %}">📧 Contact Us</a></li>
+            </ul>
+            </ul>
+ <div class="auth-container">
+        <div class="auth-buttons">
+            <a href="/login/" class="auth-button login-btn">🔐 Login</a>
+            <a href="/register/" class="auth-button register-btn">📝 Register</a>
+        </div>
+    </div>
+
+            {% comment %} <div class="search-container">
+                <form class="search-form" action="/search/" method="GET">
+                    <input type="text" placeholder="🔍 Search..." name="query" required>
+                    <button type="submit">Search</button>
+                </form>
+            </div> {% endcomment %}
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-description">
+            {% comment %} <h2>Welcome to NSB Disposable Glasses!</h2> {% endcomment %}
+            <h2 class="flowing-heading">
+                <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span> 
+                <span>t</span><span>o</span> 
+                <span>N</span><span>S</span><span>B</span> 
+                <span>D</span><span>i</span><span>s</span><span>p</span><span>o</span><span>s</span><span>a</span><span>b</span><span>l</span><span>e</span> 
+                <span>G</span><span>l</span><span>a</span><span>s</span><span>s</span><span>e</span><span>s</span>
+            </h2>
+            
+            <p class="pa">We specialize in providing high-quality disposable glasses for various occasions. Our products are eco-friendly and designed to ensure convenience without compromising on style. Explore our range of products and enjoy the best disposable solutions for your events.</p>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'home3.webp' %}" alt="About Image 1" class="active">
+            <img src="{% static 'home5.webp' %}" alt="About Image 2">
+            <img src="{% static 'home2.webp' %}" alt="About Image 3">
+        </div>
+    </div>
+
+    <!-- New about1 section separated -->
+      </br></br></br></br></br></br></br></br></br></br>      </br></br></br></br></br></br></br></br></br></br>
+    </br></br></br></br></br></br></br></br></br></br>
+
+  
+        <h1 style="text-align:center" class="flowing-products">
+            <span>O</span><span>u</span><span>r</span>
+            <span>P</span><span>r</span><span>o</span><span>d</span><span>u</span><span>c</span><span>t</span><span>s</span>
+        </h1>
+        
+    <div class="product-container">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            <h3 style="color:black">{{ product.title }}</h3>
+            <p style="color:black">{{ product.description }}</p>
+            <p class="price">Price: ${{ product.price }}INR</p>
+            {% if product.discount_price %}
+            <p class="discount-price">Discounted Price: ${{ product.discount_price }}</p>
+            {% endif %}
+            <p class="rating">Rating: {{ product.rating }} ({{ product.reviews_count }} reviews)</p>
+            {% if product.is_promotion %}
+            <p class="promotion">Promotion: {{ product.promotion_details }}</p>
+            {% endif %}
+            <!-- Like button -->
+            
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Information -->
+            <div class="company-info">
+                <a href="/"><img src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+                <h3>NSB Disposable Glasses</h3>
+                <p>Your go-to choice for eco-friendly and high-quality disposable glasses.</p>
+                <p>Contact: info@nsbdisposable.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="social-media">
+                <h4>Follow Us</h4>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/gbhagath77" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+    
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d951.8770213089729!2d78.49308580578102!3d17.38738788384574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1730918569737!5m2!1sen!2sin" width="100%" height="450" class="map" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+        <!-- Legal Information -->
+        <div class="legal">
+            <p>&copy; 2024 NSB Disposable Glasses. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Get the menu icon and the nav links container
+
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.about-image img');
+
+        function changeImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(changeImage, 3000); // Change image every 3 seconds
+    </script>
+</body>
+</html>

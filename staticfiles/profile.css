@@ -1,0 +1,124 @@
+/* profile.css */
+
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Background color for body */
+}
+
+nav {
+    background-color: black; /* Navbar background color */
+    color: white; /* White text color */
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Logo height */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px; /* Space between nav items */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white; /* White color for navbar links */
+}
+
+.nav-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    position: relative; /* For dropdown positioning */
+}
+
+.user-profile img {
+    border-radius: 50%; /* Circular profile image */
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin-right: 8px; /* Space between image and text */
+}
+
+.dropdown {
+    display: none; /* Initially hide the dropdown */
+    position: absolute;
+    background-color: black; /* Dropdown background color */
+    color: white; /* Text color for dropdown items */
+    min-width: 160px; /* Minimum width of dropdown */
+    z-index: 1; /* Ensure dropdown appears above other elements */
+}
+
+.dropdown ul {
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.dropdown li {
+    list-style-type: none; /* Remove bullets */
+    padding: 8px 12px; /* Adjust padding for dropdown items */
+}
+
+.dropdown li:hover {
+    background-color: #444; /* Darker shade on hover */
+}
+
+.user-profile:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+}
+
+.about-container {
+    padding: 20px;
+    max-width: 800px; /* Limit the width */
+    margin: auto; /* Center the container */
+    border: 1px solid #ddd; /* Border around the container */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background for container */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.about-description {
+    margin-bottom: 20px; /* Space below description */
+}
+
+.about-image {
+    position: relative; /* For absolute positioning of images */
+    overflow: hidden; /* Hide overflow for active image */
+}
+
+.about-image img {
+    width: 100%; /* Full width images */
+    display: none; /* Hide images by default */
+    position: absolute; /* Position images absolutely */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    opacity: 0; /* Start with transparent images */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+.about-image img.active {
+    display: block; /* Show active image */
+    opacity: 1; /* Fully visible */
+}
+
+.about-image img.active {
+    display: block;
+}
+.about-image img {
+    display: none; /* Hide non-active images */
+}

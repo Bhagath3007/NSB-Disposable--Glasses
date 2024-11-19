@@ -1,0 +1,518 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'NSBMAINLOGO.webp' %}" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact Us-NSB Disposable Glasses</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Set background to black */
+            color: #fff; /* Text color white */
+        }
+
+        body,span,h1,h2,h3,h4,h5,h6,li{
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700; /* Use 400, 500, 600, or 700 for different weights */
+        }
+        p {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 1rem;
+            color: white;
+        }
+        
+        .navbar .logo a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .navbar .logo img {
+            width: 120px; /* Adjust based on your logo size */
+        }
+        
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+        
+        /* Hamburger Menu Icon */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Close Icon (X) */
+        .close-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Media Query for Mobile View */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack logo and menu on mobile */
+                align-items: flex-start;
+            }
+        
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: black;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 1rem 0;
+            }
+        
+            .nav-links li {
+                text-align: center;
+                margin: 10px 0;
+            }
+        
+            .nav-links.show-menu {
+                display: flex;
+            }
+        
+            .menu-toggle {
+                display: block;
+            }
+        
+            .close-toggle {
+                display: block;
+            }
+        
+            .close-menu {
+                display: block;
+                font-size: 30px;
+                color: white;
+                margin: 15px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+        
+        /* Media Query for Laptop View (from 768px upwards) */
+        @media screen and (min-width: 769px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+            }
+        
+            .nav-links li {
+                margin: 0 20px;
+            }
+        
+            .menu-toggle, .close-toggle {
+                display: none;
+            }
+        }
+        
+        /* Map Section Styles */
+        #map {
+            margin-top: 30px;
+            padding: 20px;
+        }
+        
+        .map-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            max-width: 100%;
+            height: 400px;
+            border: 0;
+        }
+        
+        .map-details {
+            width: 100%;
+            max-width: 25%;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #fff; /* Change text color to white */
+        }
+        
+        .map-details h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .map-details p {
+            margin: 8px 0;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .company-info, .footer-nav, .social-media {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        
+        .company-info img {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-nav ul li {
+            margin: 5px 0;
+        }
+        
+        .footer-nav a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-media a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-media a:hover {
+            color: teal;
+        }
+        
+        .footer-nav li:hover {
+            color: teal;
+        }
+        
+        .legal {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Footer */
+        @media screen and (max-width: 768px) {
+            .company-info, .footer-nav, .social-media {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Auth Container */
+        .auth-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 130px; /* Rounded corners for the container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Auth Buttons Wrapper */
+        .auth-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* Space between buttons */
+            border-radius: 130px; /* Rounded corners for the container */
+        }
+        
+        /* Button Styles */
+        .auth-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 25px; /* Rounded corners for the buttons */
+            border: 2px solid transparent; /* Border to prevent layout shifts */
+            transition: all 0.3s ease;
+        }
+        
+        /* Teal Color Styling for Buttons */
+        .auth-button.login-btn {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: 2px solid #008080;
+        }
+        
+        .auth-button.register-btn {
+            background-color: #008080; /* Teal color */
+            color: white;
+            border: 2px solid #008080;
+        }
+        
+        /* Button Hover Effects */
+        .auth-button:hover {
+            transform: scale(1.05); /* Slightly enlarge the button on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        }
+        
+        /* Darker Teal on Hover for Buttons */
+        .auth-button.login-btn:hover,
+        .auth-button.register-btn:hover {
+            background-color: #004d4d; /* Darker teal color on hover */
+            border-color: #004d4d;
+        }
+        -----------------------------------------------
+
+
+        /* Global Styles */
+
+-----------------------------------------------------------
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Set background to black */
+    color: #fff; /* Text color white */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+/* Logo Styles */
+.navbar .logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar .logo img {
+    width: 120px; /* Adjust based on your logo size */
+}
+
+/* Navbar Links */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* Media Query for Mobile View (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack logo and menu on mobile */
+        align-items: flex-start;
+        padding: 1rem; /* Adjust padding for mobile view */
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content:space-around;
+        width: 100%;
+        flex-direction: row; /* Stack links vertically */
+        align-items: flex-start;
+        padding: 1rem 0;
+        background-color: black;
+        position: absolute;
+        top: 100px; /* Adjust top to add space below the logo */
+        left: 0;
+        right: 0;
+    }
+
+    .nav-links li {
+        text-align: left;
+        margin: 10px 0;
+        padding-left: 20px; /* Add some left padding for better alignment */
+    }
+
+    .nav-links a {
+        font-size: 18px; /* Increase font size on mobile */
+        padding: 10px 0; /* Add padding to links */
+    }
+
+    .navbar .logo {
+        margin-bottom: 10px; /* Add spacing between logo and nav links */
+    }
+
+    .nav-links.show-menu {
+        display: flex; /* Display nav links if menu is toggled */
+    }
+
+    
+}
+
+/* Media Query for Laptop View (min-width: 769px) */
+@media screen and (min-width: 769px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 3rem; /* Adjust padding for larger screens */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 0 20px;
+    }
+}
+
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="/"><img src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">🏠 Home</a></li>
+
+          <li>  <a href="{% url 'aboutus' %}">👥 About Us</a> </li>
+
+            <li><a href="{% url 'homep' %}">🛍️ Products</a></li>
+
+            <li><a href="{% url 'contact' %}">📧 Contact Us</a></li>
+        </ul>
+
+        
+    </div>
+    <div class="auth-container">
+        <div class="auth-buttons">
+            <a href="/login/" class="auth-button login-btn">🔐 Login</a>
+            <a href="/register/" class="auth-button register-btn">📝 Register</a>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <section id="map">
+        <h2>Our Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d951.8770213089729!2d78.49308580578102!3d17.38738788384574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1730918569737!5m2!1sen!2sin" loading="lazy"></iframe>
+            <div class="map-details">
+                <h3>Contact Details</h3>
+                <p><strong>Email:</strong> narsingenterprises@gmail.com</p>
+                <p><strong>Phone:</strong> +91 9849459586</p>
+                <p><strong>Address:</strong> Kachiguda Chaphal Bazzar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Information -->
+            <div class="company-info">
+                <a href="/"><img src="{% static 'NSBMAINLOGO.webp' %}" alt="NSB Logo"></a>
+                <h3>NSB Disposable Glasses</h3>
+                <p>Your go-to choice for eco-friendly and high-quality disposable glasses.</p>
+                <p><strong>Phone:</strong> +91 9849459586</p>
+                <p><strong>Address:</strong> Kachiguda Chaphal Bazzar</p>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="social-media">
+                <h4>Follow Us</h4>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    
+        <!-- Legal Information -->
+        <div class="legal">
+            <p>&copy; 2024 NSB Disposable Glasses. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
