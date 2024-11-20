@@ -3,8 +3,6 @@
 import os
 import sys
 
-from django.core.wsgi import get_wsgi_application  # This is the key addition
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nsb_disposable_glasses.settings')
@@ -18,6 +16,5 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-application = get_wsgi_application()  # Add this line to define 'application' for serverless
 if __name__ == '__main__':
     main()
